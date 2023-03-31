@@ -1,0 +1,51 @@
+﻿<Window x:Class="TMS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TMS"
+        mc:Ignorable="d"
+        Title="Trainee Management" Height="580" Width="900" ResizeMode="CanMinimize" Visibility="Visible" WindowStartupLocation="CenterScreen" Icon="Asset/ProgramIcon.png">
+    <Grid Background="#FFC2D3E4" Margin="0,0,0,0">
+        <ListView x:Name="TraineeListView" Background="#FFC2D3E4" OpacityMask="Black" Margin="0,106,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Image" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="30" Source="{Binding ImageSrc}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="First Name" Width="120" DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn Header="Last Name" Width="120" DisplayMemberBinding="{Binding LastName}"/>
+                    <GridViewColumn Header="Course Title" Width="100" DisplayMemberBinding="{Binding Course}"/>
+                    <GridViewColumn Header="Email" Width="150" DisplayMemberBinding="{Binding Email}"/>
+                    <GridViewColumn Header="Contact" Width="120" DisplayMemberBinding="{Binding Contact}"/>
+                    <GridViewColumn Header="Action" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="35"/>
+                                            <ColumnDefinition Width="45" />
+                                            <ColumnDefinition Width="60" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Column="0" Content="Edit" Name="Edit" Margin="3" Click="List_Edit_Click"  CommandParameter="{Binding}"></Button>
+                                        <Button Grid.Column="1" Content="Delete" Name="Delete" Margin="3" Click="List_Delete_Click"  CommandParameter="{Binding}"></Button>
+                                        <Button Grid.Column="2" Content="Preview" Name="Preview" Margin="3" Click="List_View_Click"  CommandParameter="{Binding}"></Button>
+
+                                    </Grid>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btnAddTrainee" Content="Add Trainee" HorizontalAlignment="Left" VerticalAlignment="Top" Width="137.667" Height="44.812" Background="#FF1C3B5B" Foreground="White" UseLayoutRounding="False" Click="BtnAddTrainee_Click" Margin="730.333,36.688,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Trainee Management System" VerticalAlignment="Top" Height="64" Width="648" FontSize="45" FontFamily="Century Gothic" Margin="8,2,0,0"/>
+    </Grid>
+</Window>
